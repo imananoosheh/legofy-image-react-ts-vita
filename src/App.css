@@ -1,0 +1,36 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#main-container{
+  display: flex;
+  justify-content: space-between;
+  width: 96vw;
+  height: 96vh;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.container-cell{
+  flex-basis:content;
+  margin: .75rem auto;
+}
+
+canvas{
+  background-color: red;
+  width: 100%;
+}
+
+.controller-container{
+  margin: 1rem .5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+datalist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  writing-mode: lr;
+  width: 200px;
+}
