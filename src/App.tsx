@@ -1,9 +1,26 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
+import bgIMG from "./assets/img.jpg";
 import "./App.css";
+import LegoCanvas from "./components/LegoCanvas";
 
 function App() {
+    const CANVAS_SIZE = 1000
     const [count, setCount] = useState(0);
+
+    function draw(canvasContext: CanvasRenderingContext2D) {
+        const backgroundImage = new Image();
+        backgroundImage.src = bgIMG
+        const backgroundImageWidth = backgroundImage.width;
+        const backgroundImageHeight = backgroundImage.height;
+        canvasContext?.drawImage(
+            backgroundImage,
+            0,
+            0,
+            backgroundImageWidth,
+            backgroundImageHeight
+        );
+    }
 
     return (
         <div className="App">
@@ -12,7 +29,7 @@ function App() {
                     <button data-upload-button>Upload</button>
                 </div>
                 <div id="canvas-container" className="container-cell">
-                  <canvas width={600} height={600}></canvas>
+                    <LegoCanvas draw={draw} height={CANVAS_SIZE} width={CANVAS_SIZE} />
                 </div>
                 <div id="controller-output" className="container-cell">
                     <div className="controller-container">
@@ -23,8 +40,7 @@ function App() {
                             name="lego-size"
                             min="20"
                             max="80"
-                            value={50}
-                            list='sizemarks'
+                            list="sizemarks"
                         ></input>
                         <datalist id="sizemarks">
                             <option value="20" label="20"></option>
@@ -40,7 +56,6 @@ function App() {
                             name="blur-volume"
                             min="1"
                             max="120"
-                            value={8}
                             list="blurmarks"
                         ></input>
                         <datalist id="blurmarks">

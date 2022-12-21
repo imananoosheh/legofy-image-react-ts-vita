@@ -12,9 +12,18 @@
   align-items: center;
 }
 .container-cell{
-  flex-basis:content;
   margin: .75rem auto;
 }
+#upload-section{
+  flex: 1 1 max-content;
+}
+#canvas-container{
+  flex: 1 1 400px;
+}
+#controller-output{
+  flex: 1 1 max-content;
+}
+
 
 canvas{
   background-color: red;
@@ -32,5 +41,5 @@ datalist {
   flex-direction: row;
   justify-content: space-between;
   writing-mode: lr;
-  width: 200px;
+  width: 100%;
 }
