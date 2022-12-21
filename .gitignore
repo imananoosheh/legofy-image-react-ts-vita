@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+package-lock.json
 
 # testing
 /coverage
@@ -13,3 +14,8 @@
 .DS_Store
 .env
 npm-debug.log
+
+# Logs
+logs
+*.log
+npm-debug.log*
