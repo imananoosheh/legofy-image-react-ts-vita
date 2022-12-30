@@ -1,15 +1,24 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import bgIMG from "./assets/img.jpg";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import LegoCanvas from "./components/LegoCanvas";
-import { set } from "zod";
 
 function App() {
     const imgWidth = 1350;
     const imgHeight = 1080;
-    const [blurValue, setBlurValue] = useState('8');
-    const [sizeValue, setSizeValue] = useState('50');
+    const [blurValue, setBlurValue] = useState("8");
+    const [sizeValue, setSizeValue] = useState("50");
+    const [bgImage, setBgImage] = useState("");
+
+    function handleUpload(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.target.files !== null) {
+            console.log(
+                event.target.files,
+                URL.createObjectURL(event.target.files[0])
+            );
+            setBgImage(URL.createObjectURL(event.target.files[0]));
+        }
+    }
+
+    useEffect(() => {}, [blurValue]);
 
     return (
         <div className="App">
@@ -18,7 +27,7 @@ function App() {
                 style={{
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "space-around"
+                    justifyContent: "space-around",
                 }}
             >
                 <div
@@ -26,20 +35,47 @@ function App() {
                         maxWidth: "500px",
                     }}
                 >
-                    <img src="./src/assets/img.jpg" alt="by sabet" style={{maxWidth: "100%"}}/>
+                    <img src={bgImage} alt="" style={{ maxWidth: "100%" }} />
                     <div id="lego-overlay-container"></div>
                 </div>
                 <div style={{ maxWidth: "500px" }}>
+                    <div id="image-input-container">
+                        <input
+                            type="file"
+                            name="image-upload-field"
+                            id="image-upload-field"
+                            onChange={(event) => {
+                                if (event.target.files) {
+                                    console.log(
+                                        event.target.files,
+                                        URL.createObjectURL(
+                                            event.target.files[0]
+                                        )
+                                    );
+                                    setBgImage(
+                                        URL.createObjectURL(
+                                            event.target.files[0]
+                                        )
+                                    );
+                                }
+                            }}
+                        />
+                    </div>
                     <div id="blur-volume-container">
-                        <label htmlFor="volume">Blur Volume</label>
+                        <label htmlFor="volume">
+                            Blur Volume ({blurValue})
+                        </label>
                         <input
                             type="range"
                             value={blurValue}
                             id="blur-volume"
                             name="volume"
-                            min={'0.1'}
-                            max={'100'}
-                            onChange={(event)=>{setBlurValue(event.target.value)}}
+                            min={"0.1"}
+                            max={"100"}
+                            step={"0.1"}
+                            onChange={(event) => {
+                                setBlurValue(event.target.value);
+                            }}
                         ></input>
                         <div
                             style={{
@@ -54,15 +90,20 @@ function App() {
                         </div>
                     </div>
                     <div id="size-volume-container">
-                        <label htmlFor="lego-size">Lego Size Volume ({sizeValue}) </label>
+                        <label htmlFor="lego-size">
+                            Lego Size Volume ({sizeValue}){" "}
+                        </label>
                         <input
                             type="range"
                             value={sizeValue}
                             id="lego-size-volume"
                             name="lego-size"
-                            min={'20'}
-                            max={'200'}
-                            onChange={(event)=> {setSizeValue(event.target.value)}}
+                            min={"20"}
+                            max={"200"}
+                            step={"1"}
+                            onChange={(event) => {
+                                setSizeValue(event.target.value);
+                            }}
                         ></input>
                         <div
                             style={{
