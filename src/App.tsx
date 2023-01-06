@@ -161,6 +161,7 @@ function App() {
                         </label>
                         <br></br>
                         <input
+                            style={{width: "100%"}}
                             type="range"
                             value={blurValue}
                             id="blur-volume"
@@ -190,6 +191,7 @@ function App() {
                         </label>
                         <br></br>
                         <input
+                            style={{width: "100%"}}
                             type="range"
                             value={sizeValue}
                             id="lego-size-volume"
