@@ -95,11 +95,13 @@ function App() {
     useEffect(() => {
         setTimeout(() => {
             propagateLegos();
-        }, 200);
-        const CIRCLE_TO_SQUARE_RATION = 0.6;
-        const legoBricks = document
-            .querySelectorAll(".lego-brick")
-            .forEach((brick) => {
+            const CIRCLE_TO_SQUARE_RATION = 0.6;
+            document.querySelectorAll(".lego-brick").forEach((brick) => {
+                console.log(
+                    brick,
+                    brick.firstElementChild,
+                    brick.lastElementChild
+                );
                 brick.setAttribute(
                     "style",
                     `width:${sizeValue}px;height:${sizeValue}px`
@@ -110,9 +112,12 @@ function App() {
                 );
                 brick.lastElementChild?.setAttribute(
                     "style",
-                    `width:${Number(sizeValue) * CIRCLE_TO_SQUARE_RATION}px`
+                    `width:${
+                        Number(sizeValue) * CIRCLE_TO_SQUARE_RATION
+                    }px;height:${Number(sizeValue) * CIRCLE_TO_SQUARE_RATION}px`
                 );
             });
+        }, 200);
     }, [sizeValue]);
 
     useEffect(() => {
