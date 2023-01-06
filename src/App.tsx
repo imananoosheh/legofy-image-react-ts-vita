@@ -140,6 +140,7 @@ function App() {
                 </section>
                 <div
                     style={{
+                        margin:"3rem",
                         height: "max(26vh, 20vw)",
                         display: "flex",
                         flexDirection: "column",
