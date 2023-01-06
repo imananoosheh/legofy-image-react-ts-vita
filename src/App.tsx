@@ -143,7 +143,7 @@ function App() {
                     <div id="blur-volume-container">
                         <label htmlFor="volume">
                             Blur Volume ({blurValue})
-                        </label>
+                        </label><br></br>
                         <input
                             type="range"
                             value={blurValue}
@@ -171,7 +171,7 @@ function App() {
                     <div id="size-volume-container">
                         <label htmlFor="lego-size">
                             Lego Size Volume ({sizeValue}){" "}
-                        </label>
+                        </label><br></br>
                         <input
                             type="range"
                             value={sizeValue}
