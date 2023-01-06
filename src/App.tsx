@@ -117,7 +117,7 @@ function App() {
                     }px;height:${Number(sizeValue) * CIRCLE_TO_SQUARE_RATION}px`
                 );
             });
-        }, 200);
+        }, 100);
     }, [sizeValue]);
 
     useEffect(() => {
