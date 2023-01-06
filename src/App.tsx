@@ -96,6 +96,7 @@ function App() {
         setTimeout(() => {
             propagateLegos();
         }, 200);
+        const CIRCLE_TO_SQUARE_RATION = 0.6;
         const legoBricks = document
             .querySelectorAll(".lego-brick")
             .forEach((brick) => {
@@ -103,9 +104,14 @@ function App() {
                     "style",
                     `width:${sizeValue}px;height:${sizeValue}px`
                 );
-                //TODO: continue from here
-                // brick.firstChild.
-                // setAttribute('style',`width:${sizeValue}px;height:${sizeValue}px`)
+                brick.firstElementChild?.setAttribute(
+                    "style",
+                    `width:${sizeValue}px;height:${sizeValue}px`
+                );
+                brick.lastElementChild?.setAttribute(
+                    "style",
+                    `width:${Number(sizeValue) * CIRCLE_TO_SQUARE_RATION}px`
+                );
             });
     }, [sizeValue]);
 
@@ -140,7 +146,7 @@ function App() {
                 </section>
                 <div
                     style={{
-                        margin:"3rem",
+                        margin: "3rem",
                         height: "max(26vh, 20vw)",
                         display: "flex",
                         flexDirection: "column",
@@ -156,13 +162,13 @@ function App() {
                             onChange={handleUpload}
                         />
                     </div>
-                    <div id="blur-volume-container" style={{width: "100%"}}>
+                    <div id="blur-volume-container" style={{ width: "100%" }}>
                         <label htmlFor="volume">
                             Blur Volume ({blurValue})
                         </label>
                         <br></br>
                         <input
-                            style={{width: "100%"}}
+                            style={{ width: "100%" }}
                             type="range"
                             value={blurValue}
                             id="blur-volume"
@@ -186,13 +192,13 @@ function App() {
                             <span>100</span>
                         </div>
                     </div>
-                    <div id="size-volume-container" style={{width: "100%"}}>
+                    <div id="size-volume-container" style={{ width: "100%" }}>
                         <label htmlFor="lego-size">
                             Lego Size Volume ({sizeValue}){" "}
                         </label>
                         <br></br>
                         <input
-                            style={{width: "100%"}}
+                            style={{ width: "100%" }}
                             type="range"
                             value={sizeValue}
                             id="lego-size-volume"
